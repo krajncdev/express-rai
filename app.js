@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -9,6 +11,14 @@ var usersRouter = require('./routes/userRoutes');
 var photoRouter = require('./routes/photoRoutes');
 
 var app = express();
+
+var mongoose = require('mongoose');
+var mongoDB = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@raiferi.oc08xgm.mongodb.net/?retryWrites=true&w=majority&appName=RaiFeri`;
+mongoose.connect(mongoDB);
+mongoose.promise = global.Promise;
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
