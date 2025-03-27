@@ -8,7 +8,7 @@
 ### 1. Kloniraj repozitorij
 
 ```bash
-git clone https://github.com/krajncdev/express-feri-internet.git
+git clone https://github.com/krajncdev/express-rai.git
 cd express-feri-internet
 ```
 
