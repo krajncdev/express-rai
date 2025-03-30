@@ -10,19 +10,22 @@ module.exports = {
    * questionController.list()
    */
   list: function (req, res) {
-    QuestionModel.find(function (err, questions) {
-      if (err) {
-        return res.status(500).json({
-          message: 'Error when getting question.',
-          error: err,
-        });
-      }
+    QuestionModel.find()
+      .populate('postedBy')
+      .exec(function (err, questions) {
+        if (err) {
+          return res.status(500).json({
+            message: 'Error when getting question.',
+            error: err,
+          });
+        }
 
-      var data = [];
-      data.questions = questions;
+        var data = [];
+        data.questions = questions;
+        console.log(data.questions);
 
-      return res.render('question/list', data);
-    });
+        return res.render('question/list', data);
+      });
   },
 
   /**
@@ -31,33 +34,24 @@ module.exports = {
   show: function (req, res) {
     var id = req.params.id;
 
-    QuestionModel.findOne({ _id: id }, async function (err, question) {
-      if (err) {
-        return res.status(500).json({
-          message: 'Error when getting question.',
-          error: err,
-        });
-      }
+    QuestionModel.findOne({ _id: id })
+      .populate('postedBy')
+      .exec(function (err, question) {
+        if (err) {
+          return res.status(500).json({
+            message: 'Error when getting question.',
+            error: err,
+          });
+        }
 
-      if (!question) {
-        return res.status(404).json({
-          message: 'No such question',
-        });
-      }
+        if (!question) {
+          return res.status(404).json({
+            message: 'No such question',
+          });
+        }
 
-      var answers;
-      try {
-        answers = await AnswerModel.find({ questionId: id });
-      } catch (err) {
-        console.error(err);
-      }
-
-      var data = [];
-      data.question = question;
-      data.answers = answers ? answers : [];
-
-      return res.render('question/show', data);
-    });
+        return res.render('question/show', question);
+      });
   },
 
   /**

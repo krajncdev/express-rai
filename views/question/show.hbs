@@ -1,0 +1,10 @@
+<h1>{{title}}</h1>
+<h2>Opis: </h2>
+<p>{{description}}</p>
+<h2>Objavil:</h2>
+<p>{{postedBy.username}}, {{createdAt}}</p>
+<h2>Odgovori: </h2>
+
+{{#each answers}}
+  <p>{{answer}}</p>
+{{/each}}
