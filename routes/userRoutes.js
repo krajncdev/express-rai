@@ -1,4 +1,9 @@
 var express = require('express');
+
+// photos
+var multer = require('multer');
+var upload = multer({ dest: 'public/images/' });
+
 var router = express.Router();
 var userController = require('../controllers/userController.js');
 
