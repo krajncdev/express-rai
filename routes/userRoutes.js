@@ -37,4 +37,9 @@ router.get('/login', userController.showLogin);
  */
 router.get('/register', userController.showRegister);
 
+/*
+ * LOGIN
+ */
+router.post('/login', userController.login);
+
 module.exports = router;
