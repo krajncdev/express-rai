@@ -18,7 +18,10 @@ module.exports = {
         });
       }
 
-      return res.json(questions);
+      var data = [];
+      data.questions = questions;
+
+      return res.render('question/list', data);
     });
   },
 

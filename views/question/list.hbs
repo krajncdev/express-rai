@@ -1,5 +1,5 @@
 <h1>Vprašanja:</h1>
-{{#each photos}}
+{{#each questions}}
   <h2>{{title}}</h2>
   <p>{{description}}</p>
   Objavil:
@@ -7,4 +7,5 @@
   , ob:
   <span>{{createdAt}}</span>
   <hr />
+  <br /><a type='button' href='/questions/{{_id}}'>Odjava </a>
 {{/each}}
