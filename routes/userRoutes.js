@@ -42,4 +42,14 @@ router.get('/register', userController.showRegister);
  */
 router.post('/login', userController.login);
 
+/*
+ * LOGOUT
+ */
+router.get('/logout', userController.logout);
+
+/*
+ * MYPROFILE
+ */
+router.get('/profile', userController.profile);
+
 module.exports = router;
