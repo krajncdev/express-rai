@@ -1,0 +1,10 @@
+<h1>Vprašanja:</h1>
+{{#each photos}}
+  <h2>{{title}}</h2>
+  <p>{{description}}</p>
+  Objavil:
+  <span>{{postedBy.username}}</span>
+  , ob:
+  <span>{{createdAt}}</span>
+  <hr />
+{{/each}}

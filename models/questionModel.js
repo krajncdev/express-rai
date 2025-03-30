@@ -4,6 +4,10 @@ var Schema   = mongoose.Schema;
 var questionSchema = new Schema({
 	'title' : String,
 	'description' : String,
+	'postedBy' : {
+		type: Schema.Types.ObjectId,
+		ref: 'user'
+   },
 	'createdAt' : Date
 });
 
