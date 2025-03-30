@@ -10,16 +10,19 @@ module.exports = {
    * photoController.list()
    */
   list: function (req, res) {
-    PhotoModel.find(function (err, photos) {
-      if (err) {
-        return res.status(500).json({
-          message: 'Error when getting photo.',
-          error: err,
-        });
-      }
-
-      return res.json(photos);
-    });
+    PhotoModel.find()
+      .populate('postedBy')
+      .exec(function (err, photos) {
+        if (err) {
+          return res.status(500).json({
+            message: 'Error when getting photo.',
+            error: err,
+          });
+        }
+        var data = [];
+        data.photos = photos;
+        return res.render('photo/list', data);
+      });
   },
 
   /**
