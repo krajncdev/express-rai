@@ -27,4 +27,19 @@ router.put('/:id', userController.update);
  */
 router.delete('/:id', userController.remove);
 
+/*
+ * SHOW LOGIN
+ */
+router.get('/login', userController.showLogin);
+
+/*
+ * SHOW REGISTER
+ */
+router.get('/register', userController.showRegister);
+
+/*
+ * LOGIN
+ */
+router.post('/login', userController.login);
+
 module.exports = router;

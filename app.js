@@ -20,6 +20,16 @@ var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+// session setup
+var session = require('express-session');
+app.use(
+  session({
+    secret: 'my secret',
+    resave: true,
+    saveUninitialized: false,
+  })
+);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
