@@ -39,4 +39,5 @@ userSchema.statics.authenticate = function (username, password, callback) {
   });
 };
 
+var User = mongoose.model('user', userSchema);
 module.exports = mongoose.model('user', userSchema);
