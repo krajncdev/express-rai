@@ -3,9 +3,8 @@
   <h2>{{title}}</h2>
   <p>{{description}}</p>
   Objavil:
-  <span>{{postedBy.username}}</span>
-  , ob:
+  <span>{{postedBy.username}}, </span>
   <span>{{createdAt}}</span>
+  <br /><a type='button' href='/questions/{{_id}}'>Več</a>
   <hr />
-  <br /><a type='button' href='/questions/{{_id}}'>Odjava </a>
 {{/each}}
